@@ -8,16 +8,11 @@ import jakarta.persistence.*;
 public class Book_Author {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "book_author_id")
-    private int bookAuthorId;
+    @Column(name = "book_id")
+    private int bookId;
 
-    @ManyToOne
-    @JoinColumn(name = "book_id")
-    private Book book;
-
-    @ManyToOne
-    @JoinColumn(name = "author_id")
-    private Author author;
+    @Column(name = "author_id")
+    private int authorId;
 
     // Getter and setter methods
 }
