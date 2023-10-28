@@ -14,8 +14,6 @@ public class Author {
 
     @Column(name = "author_name")
     private String authorName;
-    @ManyToMany(mappedBy = "authors")
-    private List<Book> books;
 
     // Getter and setter methods
 }

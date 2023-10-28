@@ -14,8 +14,6 @@ public class PaymentMethod {
 
     @Column(name = "payment_method_name")
     private String paymentMethodName;
-    @OneToMany(mappedBy = "paymentMethod")
-    private List<Order> orders;
 
     // Getter and setter methods
 }

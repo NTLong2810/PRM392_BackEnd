@@ -20,8 +20,6 @@ public class OrderDetails {
 
     @Column(name = "quantity")
     private int quantity;
-    @OneToOne(mappedBy = "orderDetails")
-    private Feedback feedback;
 
     // Getter and setter methods
 }

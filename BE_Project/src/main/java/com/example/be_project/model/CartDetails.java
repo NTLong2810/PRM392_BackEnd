@@ -6,10 +6,10 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@AllArgsConstructor
 @NoArgsConstructor
-@Builder
+@AllArgsConstructor
 @Data
+@Builder
 @Entity
 @Table(name = "CartDetails")
 public class CartDetails {

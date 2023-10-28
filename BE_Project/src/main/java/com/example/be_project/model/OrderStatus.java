@@ -14,8 +14,6 @@ public class OrderStatus {
 
     @Column(name = "order_status_name")
     private String orderStatusName;
-    @OneToMany(mappedBy = "orderStatus")
-    private List<Order> orders;
 
     // Getter and setter methods
 }

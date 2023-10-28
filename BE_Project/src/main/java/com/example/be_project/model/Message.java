@@ -12,9 +12,8 @@ public class Message {
     @Column(name = "message_id")
     private int messageId;
 
-    @ManyToOne
-    @JoinColumn(name = "customer_id")
-    private Customer customer;
+    @Column(name = "customer_id")
+    private Long customerId;
 
     @Column(name = "message_content")
     private String messageContent;
@@ -22,9 +21,8 @@ public class Message {
     @Column(name = "message_datetime")
     private Date messageDatetime;
 
-    @ManyToOne
-    @JoinColumn(name = "seller_id")
-    private Seller seller;
+    @Column(name = "seller_id")
+    private Long sellerId;
 
     // Getter and setter methods
 }

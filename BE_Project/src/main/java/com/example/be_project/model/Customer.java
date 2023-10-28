@@ -18,30 +18,15 @@ public class Customer {
     @Column(name = "customer_email")
     private String customerEmail;
 
-    @ManyToOne
-    @JoinColumn(name = "customer_address")
-    private Address customerAddress;
+
+    @Column(name = "customer_address")
+    private Long AddressId;
 
     @Column(name = "customer_phone")
     private String customerPhone;
 
     @Column(name = "customer_image")
     private String customerImage;
-
-    @OneToMany(mappedBy = "customer")
-    private List<Feedback> feedbacks;
-
-    @OneToMany(mappedBy = "customer")
-    private List<Message> messages;
-
-    @OneToMany(mappedBy = "customer")
-    private List<Order> orders;
-
-    @OneToMany(mappedBy = "customer")
-    private List<CartDetails> cartDetails;
-    @OneToOne
-    @JoinColumn(name = "account_id")
-    private Account account;
 
     // Getter and setter methods
 }
