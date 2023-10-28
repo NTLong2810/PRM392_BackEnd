@@ -17,8 +17,6 @@ public class ShippingMethod {
 
     @Column(name = "price")
     private Double price;
-    @OneToMany(mappedBy = "shippingMethod")
-    private List<Order> orders;
 
     // Getter and setter methods
 }

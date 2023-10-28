@@ -14,8 +14,6 @@ public class Role {
 
     @Column(name = "role_name")
     private String roleName;
-    @ManyToMany(mappedBy = "roles")
-    private List<Feature> features;
 
     // Constructors, getters, and setters
 }

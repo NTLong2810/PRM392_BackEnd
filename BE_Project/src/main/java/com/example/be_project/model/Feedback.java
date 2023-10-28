@@ -21,12 +21,9 @@ public class Feedback {
     @Column(name = "feedback_rate")
     private int feedbackRate;
 
-    @ManyToOne
-    @JoinColumn(name = "customer_id")
-    private Customer customer;
+    @Column(name = "customer_id")
+    private Long customerId;
 
-    @OneToOne(mappedBy = "feedback")
-    private OrderDetails orderDetails;
 
     // Getter and setter methods
 }

@@ -12,8 +12,6 @@ public class Seller {
 
     @Column(name = "seller_name")
     private String sellerName;
-    @OneToOne
-    @JoinColumn(name = "account_id")
-    private Account account;
+
     // Getter and setter methods
 }
