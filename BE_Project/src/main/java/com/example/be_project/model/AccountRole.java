@@ -6,11 +6,14 @@ import jakarta.persistence.*;
 @Table(name = "Account_Role")
 public class AccountRole {
     @Id
-    @Column(name = "account_id")
-    private int accountId;
+    @ManyToOne
+    @JoinColumn(name = "account_id")
+    private Account account;
 
-    @Column(name = "role_id")
-    private int roleId;
+    @Id
+    @ManyToOne
+    @JoinColumn(name = "role_id")
+    private Role role;
 
     // Constructors, getters, and setters
 }
