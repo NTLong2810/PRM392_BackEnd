@@ -1,10 +1,19 @@
 package com.example.be_project.model;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 import java.util.Objects;
 
+
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@Data
 @Table(name = "Book")
 public class Book {
     @Id
