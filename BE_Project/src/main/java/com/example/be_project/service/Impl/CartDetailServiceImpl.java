@@ -1,6 +1,6 @@
 package com.example.be_project.service.Impl;
 
-import com.example.be_project.model.Cart;
+import com.example.be_project.model.Book;
 import com.example.be_project.model.CartDetails;
 import com.example.be_project.repository.CartDetailRepository;
 import com.example.be_project.service.CartDetailService;
@@ -15,8 +15,8 @@ public class CartDetailServiceImpl implements CartDetailService {
     private final CartDetailRepository cartRepository;
 
     @Override
-    public List<CartDetails> getListByCartId(Long cartId) {
-        return cartRepository.getListByCartId(cartId);
+    public List<CartDetails> getListByCustomer(Long customertId) {
+        return cartRepository.getListByCustomer(customertId);
     }
 
     @Override
@@ -33,4 +33,10 @@ public class CartDetailServiceImpl implements CartDetailService {
     public CartDetails getById(Long id) {
         return cartRepository.getById(id);
     }
+
+    @Override
+    public Book getCartByCustomer(Long customerId) {
+        return null;
+    }
+
 }

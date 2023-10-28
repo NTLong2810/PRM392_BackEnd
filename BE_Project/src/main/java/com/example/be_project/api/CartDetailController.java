@@ -2,7 +2,6 @@ package com.example.be_project.api;
 
 import com.example.be_project.DTO.CartDetailDTO;
 import com.example.be_project.model.Book;
-import com.example.be_project.model.Cart;
 import com.example.be_project.model.CartDetails;
 import com.example.be_project.service.CartDetailService;
 import lombok.RequiredArgsConstructor;
@@ -18,8 +17,8 @@ import java.util.List;
 public class CartDetailController {
     private final CartDetailService cartDetailService;
     @GetMapping
-    public ResponseEntity<?> getCartById(@RequestParam Long id){
-        List<CartDetails> list = cartDetailService.getListByCartId(id);
+    public ResponseEntity<?> getCartByCustomer(@RequestParam Long CustomerId){
+        List<CartDetails> list = cartDetailService.getListByCustomer(CustomerId);
         return new ResponseEntity<>(list, HttpStatusCode.valueOf(200));
     }
     @PutMapping
@@ -31,20 +30,9 @@ public class CartDetailController {
     }
     @PostMapping
     public ResponseEntity<?> createCartDetail(@RequestBody CartDetailDTO dto){
-        Book book = Book.builder()
-                .bookId(dto.getBookId())
-                .bookTitle(dto.getBookTitle())
-                .bookImage(dto.getBookImage())
-                .bookPrice((double)dto.getBookPrice())
-                .build();
-
-        Cart cart = Cart.builder()
-                .customerId(dto.getCartId())
-                .build();
-
         CartDetails cartDetails = CartDetails.builder()
-                .book(book)
-                .cart(cart)
+                .bookId(dto.getBookId())
+                .customerId(dto.getCustomerId())
                 .quantity(dto.getAmount())
                 .build();
         cartDetails = cartDetailService.saveCartDetail(cartDetails);
