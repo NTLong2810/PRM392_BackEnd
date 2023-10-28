@@ -10,10 +10,10 @@ import java.util.List;
 
 @Repository
 public interface CartDetailRepository extends JpaRepository<CartDetails, Long> {
-    @Query(value = "select * from CartDetails where cart_details_id = :customerId", nativeQuery = true)
-    List<CartDetails> getListByCustomer(Long customerId);
+    @Query(value = "select * from CartDetails where customer_id = :customerId", nativeQuery = true)
+    List<CartDetails> getListByCustomer(int customerId);
 
-    CartDetails saveAndFlush(CartDetails cartDetails);
+    CartDetails save(CartDetails cartDetails);
 
     void deleteById(Long cartDetailId);
 

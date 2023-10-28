@@ -14,6 +14,6 @@ public class CartDetailDTO {
     private int bookId;
     private String bookTitle;
     private String bookImage;
-    private Long bookPrice;
+    private double bookPrice;
     private int amount;
 }

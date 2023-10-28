@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "CartDetails")
 public class CartDetails {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cart_details_id")
     private Long cartDetailsId;
 

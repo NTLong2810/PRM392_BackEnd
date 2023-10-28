@@ -1,13 +1,14 @@
 package com.example.be_project.service;
 
 
+import com.example.be_project.DTO.CartDetailDTO;
 import com.example.be_project.model.Book;
 import com.example.be_project.model.CartDetails;
 
 import java.util.List;
 
 public interface CartDetailService {
-    List<CartDetails> getListByCustomer(Long customerId);
+    List<CartDetails> getListByCustomer(int customerId);
 
     CartDetails saveCartDetail(CartDetails cartDetails);
 
@@ -15,5 +16,5 @@ public interface CartDetailService {
 
     CartDetails getById(Long id);
 
-    Book getCartByCustomer(Long customerId);
+    List<CartDetailDTO> getCartByCustomer(int customerId);
 }

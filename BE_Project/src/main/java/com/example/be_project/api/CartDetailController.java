@@ -17,8 +17,8 @@ import java.util.List;
 public class CartDetailController {
     private final CartDetailService cartDetailService;
     @GetMapping
-    public ResponseEntity<?> getCartByCustomer(@RequestParam Long CustomerId){
-        List<CartDetails> list = cartDetailService.getListByCustomer(CustomerId);
+    public ResponseEntity<?> getCartByCustomer(@RequestParam int CustomerId){
+        List<CartDetailDTO> list = cartDetailService.getCartByCustomer(CustomerId);
         return new ResponseEntity<>(list, HttpStatusCode.valueOf(200));
     }
     @PutMapping
