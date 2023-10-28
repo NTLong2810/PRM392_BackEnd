@@ -2,16 +2,20 @@ package com.example.be_project.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "Author")
 public class Author {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "author_id")
     private int authorId;
 
     @Column(name = "author_name")
     private String authorName;
+    @ManyToMany(mappedBy = "authors")
+    private List<Book> books;
 
     // Getter and setter methods
 }

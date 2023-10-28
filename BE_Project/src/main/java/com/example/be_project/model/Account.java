@@ -6,73 +6,39 @@ import jakarta.persistence.*;
 @Table(name = "Account")
 public class Account {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "account_id")
-    private Long accountId;
+    private int accountId;
 
     @Column(name = "account_username")
-    private String username;
+    private String accountUsername;
 
     @Column(name = "account_password")
-    private String password;
+    private String accountPassword;
 
-    @OneToOne(mappedBy = "account")
-    private Customer customer;
+    // Getters and setters
 
-    @OneToOne(mappedBy = "account")
-    private Seller seller;
-
-    // Constructors, getters, and setters
-
-
-    public Account() {
-    }
-
-    public Account(Long accountId, String username, String password, Customer customer, Seller seller) {
-        this.accountId = accountId;
-        this.username = username;
-        this.password = password;
-        this.customer = customer;
-        this.seller = seller;
-    }
-
-    public Long getAccountId() {
+    public int getAccountId() {
         return accountId;
     }
 
-    public void setAccountId(Long accountId) {
+    public void setAccountId(int accountId) {
         this.accountId = accountId;
     }
 
-    public String getUsername() {
-        return username;
+    public String getAccountUsername() {
+        return accountUsername;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setAccountUsername(String accountUsername) {
+        this.accountUsername = accountUsername;
     }
 
-    public String getPassword() {
-        return password;
+    public String getAccountPassword() {
+        return accountPassword;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
-    public Seller getSeller() {
-        return seller;
-    }
-
-    public void setSeller(Seller seller) {
-        this.seller = seller;
+    public void setAccountPassword(String accountPassword) {
+        this.accountPassword = accountPassword;
     }
 }

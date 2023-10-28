@@ -2,11 +2,13 @@ package com.example.be_project.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "Customer")
 public class Customer {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "customer_id")
     private int customerId;
 
@@ -23,14 +25,22 @@ public class Customer {
     @Column(name = "customer_phone")
     private String customerPhone;
 
-    @Lob
     @Column(name = "customer_image")
     private String customerImage;
 
-    @Column(name = "customer_type_sign_in")
-    private int customerTypeSignIn;
+    @OneToMany(mappedBy = "customer")
+    private List<Feedback> feedbacks;
+
+    @OneToMany(mappedBy = "customer")
+    private List<Message> messages;
+
+    @OneToMany(mappedBy = "customer")
+    private List<Order> orders;
+
+    @OneToMany(mappedBy = "customer")
+    private List<CartDetails> cartDetails;
     @OneToOne
-    @JoinColumn(name = "account_id", referencedColumnName = "account_id")
+    @JoinColumn(name = "account_id")
     private Account account;
 
     // Getter and setter methods

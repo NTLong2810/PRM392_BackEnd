@@ -3,12 +3,13 @@ package com.example.be_project.model;
 import jakarta.persistence.*;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "Order")
 public class Order {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "order_id")
     private int orderId;
 
@@ -43,6 +44,8 @@ public class Order {
     @ManyToOne
     @JoinColumn(name = "shipping_method_id")
     private ShippingMethod shippingMethod;
+    @OneToMany(mappedBy = "order")
+    private List<OrderDetails> orderDetails;
 
     // Getter and setter methods
 }
