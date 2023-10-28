@@ -18,13 +18,11 @@ public class CartDetails {
     @Column(name = "cart_details_id")
     private Long cartDetailsId;
 
-    @ManyToOne
-    @JoinColumn(name = "cart_id")
-    private Cart cart;
+    @Column(name = "customer_id")
+    private int customerId;
 
-    @ManyToOne
-    @JoinColumn(name = "book_id")
-    private Book book;
+    @Column(name = "book_id")
+    private int bookId;
 
     @Column(name = "quantity")
     private int quantity;
