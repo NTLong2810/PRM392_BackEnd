@@ -29,6 +29,9 @@ public class Customer {
 
     @Column(name = "customer_type_sign_in")
     private int customerTypeSignIn;
+    @OneToOne
+    @JoinColumn(name = "account_id", referencedColumnName = "account_id")
+    private Account account;
 
     // Getter and setter methods
 }
