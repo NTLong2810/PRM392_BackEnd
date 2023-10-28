@@ -14,8 +14,8 @@ public interface CartDetailRepository extends JpaRepository<CartDetails, Long> {
     List<CartDetails> getListByCartId(Long id);
 
     CartDetails saveAndFlush(CartDetails cartDetails);
-    @Query(value = "delete from CartDetails where cart_details_id = :cartDetailId", nativeQuery = true)
+
     void deleteById(Long cartDetailId);
 
-    CartDetails getReferenceById(Long cartDetailId);
+    CartDetails getById(Long cartDetailId);
 }

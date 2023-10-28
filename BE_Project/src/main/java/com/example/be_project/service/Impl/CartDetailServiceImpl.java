@@ -31,6 +31,6 @@ public class CartDetailServiceImpl implements CartDetailService {
 
     @Override
     public CartDetails getById(Long id) {
-        return cartRepository.getReferenceById(id);
+        return cartRepository.getById(id);
     }
 }
