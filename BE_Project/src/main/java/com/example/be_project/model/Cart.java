@@ -1,7 +1,12 @@
 package com.example.be_project.model;
 
 import jakarta.persistence.*;
+import lombok.*;
 
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "Cart")
 public class Cart {
