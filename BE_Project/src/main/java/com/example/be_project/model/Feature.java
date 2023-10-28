@@ -8,7 +8,7 @@ import java.util.List;
 @Table(name = "Feature")
 public class Feature {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "feature_id")
     private int featureId;
 
