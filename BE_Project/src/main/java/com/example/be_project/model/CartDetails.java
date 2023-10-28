@@ -18,6 +18,9 @@ public class CartDetails {
 
     @Column(name = "quantity")
     private int quantity;
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
 
     // Getter and setter methods
 }

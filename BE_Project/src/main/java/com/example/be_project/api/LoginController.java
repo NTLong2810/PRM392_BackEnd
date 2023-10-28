@@ -17,7 +17,7 @@ public class LoginController {
     @PostMapping("/login")
     public Account login(@RequestBody Account account) {
         // Tìm kiếm tài khoản dựa trên username và password
-        Account existingAccount = accountRepository.findByUsernameAndPassword(account.getUsername(), account.getPassword());
+        Account existingAccount = accountRepository.findByAccountUsernameAndAccountPassword(account.getAccountUsername(), account.getAccountPassword());
         if (existingAccount == null) {
             throw new RuntimeException("Tên đăng nhập hoặc mật khẩu không đúng");
         }

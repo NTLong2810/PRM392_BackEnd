@@ -36,8 +36,9 @@ public class Book {
     @Column(name = "publisher_id")
     private int publisherId;
 
-    @Column(name = "category_id")
-    private int categoryId;
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
 
     @Column(name = "book_quantity")
     private int bookQuantity;

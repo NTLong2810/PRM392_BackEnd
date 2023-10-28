@@ -15,7 +15,7 @@ public class RegisterController {
     @PostMapping("/register")
     public Account register(@RequestBody Account account) {
         // Kiểm tra xem tài khoản đã tồn tại chưa
-        if (accountRepository.findByUsername(account.getUsername()) != null) {
+        if (accountRepository.findByAccountUsername(account.getAccountUsername()) != null) {
             throw new RuntimeException("Tài khoản đã tồn tại");
         }
 
