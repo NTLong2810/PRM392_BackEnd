@@ -1,5 +1,6 @@
 package com.example.be_project.service;
 
+import com.example.be_project.model.Book;
 import com.example.be_project.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,15 +11,11 @@ public class BookService {
     @Autowired
     private BookRepository bookRepository;
 
-    public List<Object[]> findAllBooks() {
-        return bookRepository.findAllBook();
+    public List<Book> findAllBooks() {
+        return bookRepository.findAll();
     }
 
-    public Object[] bookDetail(int bookId){
-        List<Object[]> result = bookRepository.findBookDetailById(bookId);
-        if (result.isEmpty()) {
-            return null;
-        }
-        return result.get(0);
+    public Book bookDetail(int bookId){
+        return bookRepository.findById(bookId);
     }
 }

@@ -1,5 +1,6 @@
 package com.example.be_project.api;
 
+import com.example.be_project.model.Book;
 import com.example.be_project.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,7 +21,7 @@ public class BookController {
     @GetMapping(path = "/books")
     public ResponseEntity<?> getAllBooks() {
         try {
-            List<Object[]> bookList = bookService.findAllBooks();
+            List<Book> bookList = bookService.findAllBooks();
 
             if (bookList.isEmpty()) {
                 return new ResponseEntity<>("Danh sách sách trống", HttpStatus.NO_CONTENT);
