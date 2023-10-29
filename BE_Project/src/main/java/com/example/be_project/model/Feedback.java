@@ -22,7 +22,7 @@ public class Feedback {
     private int feedbackRate;
 
     @Column(name = "customer_id")
-    private Long customerId;
+    private int customerId;
 
 
     // Getter and setter methods
