@@ -8,7 +8,7 @@ import java.util.Date;
 @Table(name = "Feedback")
 public class Feedback {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "feedback_id")
     private int feedbackId;
 
@@ -21,12 +21,9 @@ public class Feedback {
     @Column(name = "feedback_rate")
     private int feedbackRate;
 
-    @ManyToOne
-    @JoinColumn(name = "customer_id")
-    private Customer customer;
+    @Column(name = "customer_id")
+    private Long customerId;
 
-    @OneToOne(mappedBy = "feedback")
-    private OrderDetails orderDetails;
 
     // Getter and setter methods
 }

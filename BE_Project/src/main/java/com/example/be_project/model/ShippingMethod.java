@@ -8,7 +8,7 @@ import java.util.List;
 @Table(name = "ShippingMethod")
 public class ShippingMethod {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "shippoing_method_id")
     private int shippingMethodId;
 
@@ -17,8 +17,6 @@ public class ShippingMethod {
 
     @Column(name = "price")
     private Double price;
-    @OneToMany(mappedBy = "shippingMethod")
-    private List<Order> orders;
 
     // Getter and setter methods
 }

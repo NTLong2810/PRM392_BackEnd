@@ -8,7 +8,7 @@ import java.util.List;
 @Table(name = "Feature")
 public class Feature {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "feature_id")
     private int featureId;
 
@@ -17,8 +17,6 @@ public class Feature {
 
     @Column(name = "feature_url")
     private String featureUrl;
-    @ManyToMany(mappedBy = "features")
-    private List<Role> roles;
 
     // Constructors, getters, and setters
 }

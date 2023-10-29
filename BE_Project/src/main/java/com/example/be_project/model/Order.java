@@ -9,7 +9,7 @@ import java.util.List;
 @Table(name = "Order")
 public class Order {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "order_id")
     private int orderId;
 
@@ -38,14 +38,9 @@ public class Order {
     @Column(name = "shipped_datetime")
     private Date shippedDatetime;
 
-    @Column(name = "required_datetime")
-    private Date requiredDatetime;
 
-    @ManyToOne
-    @JoinColumn(name = "shipping_method_id")
-    private ShippingMethod shippingMethod;
-    @OneToMany(mappedBy = "order")
-    private List<OrderDetails> orderDetails;
+    @Column(name = "shipping_method_id")
+    private int shippingMethodId;
 
     // Getter and setter methods
 }

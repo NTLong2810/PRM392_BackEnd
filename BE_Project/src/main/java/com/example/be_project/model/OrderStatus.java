@@ -8,14 +8,12 @@ import java.util.List;
 @Table(name = "OrderStatus")
 public class OrderStatus {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "order_status_id")
     private int orderStatusId;
 
     @Column(name = "order_status_name")
     private String orderStatusName;
-    @OneToMany(mappedBy = "orderStatus")
-    private List<Order> orders;
 
     // Getter and setter methods
 }

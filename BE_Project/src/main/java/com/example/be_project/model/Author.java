@@ -8,14 +8,12 @@ import java.util.List;
 @Table(name = "Author")
 public class Author {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "author_id")
     private int authorId;
 
     @Column(name = "author_name")
     private String authorName;
-    @ManyToMany(mappedBy = "authors")
-    private List<Book> books;
 
     // Getter and setter methods
 }
