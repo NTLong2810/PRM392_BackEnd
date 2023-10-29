@@ -10,12 +10,11 @@ public class OrderDetails {
     @Column(name = "order_details_id")
     private int orderDetailsId;
 
-    @ManyToOne
-    @JoinColumn(name = "order_id")
+    @Column(name = "order_id")
     private int orderId;
 
-    @ManyToOne
-    @JoinColumn(name = "book_id")
+
+    @Column(name = "book_id")
     private int bookId;
 
     @Column(name = "quantity")
