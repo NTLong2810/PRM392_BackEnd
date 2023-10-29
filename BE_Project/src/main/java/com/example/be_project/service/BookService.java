@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+
 @Service
 public class BookService {
     @Autowired
@@ -15,7 +17,7 @@ public class BookService {
         return bookRepository.findAll();
     }
 
-    public Book bookDetail(int bookId){
+    public Optional<Book> bookDetail(int bookId){
         return bookRepository.findById(bookId);
     }
 }
