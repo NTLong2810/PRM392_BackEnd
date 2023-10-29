@@ -6,7 +6,6 @@ import jakarta.persistence.*;
 @Table(name = "Role_Feature")
 public class RoleFeature {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "role_id")
     private int roleId;
 
