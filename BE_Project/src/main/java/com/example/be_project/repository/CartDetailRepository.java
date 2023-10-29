@@ -2,7 +2,9 @@ package com.example.be_project.repository;
 
 
 import com.example.be_project.model.CartDetails;
+import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
@@ -14,7 +16,8 @@ public interface CartDetailRepository extends JpaRepository<CartDetails, Long> {
     List<CartDetails> getListByCustomer(int customerId);
 
     CartDetails save(CartDetails cartDetails);
-
+    @Modifying
+    @Transactional
     void deleteById(Long cartDetailId);
 
     CartDetails getById(Long cartDetailId);
