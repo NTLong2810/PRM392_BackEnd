@@ -43,9 +43,8 @@ public class Book {
     @Column(name = "publisher_id")
     private int publisherId;
 
-    @ManyToOne
-    @JoinColumn(name = "category_id")
-    private Category category;
+    @Column(name = "category_id")
+    private int categoryId;
 
     @Column(name = "book_quantity")
     private int bookQuantity;
