@@ -7,11 +7,11 @@ import jakarta.persistence.*;
 public class AccountRole {
     @Id
     @Column(name = "account_id")
-    private Account account;
+    private int accountId;
 
     @Id
     @Column(name = "role_id")
-    private Role role;
+    private int roleId;
 
     // Constructors, getters, and setters
 }
