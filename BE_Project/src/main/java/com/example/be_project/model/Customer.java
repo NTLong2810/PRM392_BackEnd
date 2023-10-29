@@ -8,6 +8,7 @@ import java.util.List;
 @Table(name = "Customer")
 public class Customer {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "customer_id")
     private int customerId;
 
@@ -16,6 +17,10 @@ public class Customer {
 
     @Column(name = "customer_email")
     private String customerEmail;
+
+
+    @Column(name = "customer_address")
+    private Long AddressId;
 
     @Column(name = "customer_phone")
     private String customerPhone;

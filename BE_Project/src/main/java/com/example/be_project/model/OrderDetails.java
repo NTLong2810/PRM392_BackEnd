@@ -10,13 +10,12 @@ public class OrderDetails {
     @Column(name = "order_details_id")
     private int orderDetailsId;
 
-    @ManyToOne
-    @JoinColumn(name = "order_id")
-    private Order order;
+    @Column(name = "order_id")
+    private int orderId;
 
-    @ManyToOne
-    @JoinColumn(name = "book_id")
-    private Book book;
+
+    @Column(name = "book_id")
+    private int bookId;
 
     @Column(name = "quantity")
     private int quantity;

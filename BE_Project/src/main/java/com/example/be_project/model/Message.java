@@ -22,7 +22,7 @@ public class Message {
     private Date messageDatetime;
 
     @Column(name = "seller_id")
-    private Long sellerId;
+    private int sellerId;
 
     // Getter and setter methods
 }
