@@ -12,11 +12,11 @@ public class OrderDetails {
 
     @ManyToOne
     @JoinColumn(name = "order_id")
-    private Order order;
+    private int orderId;
 
     @ManyToOne
     @JoinColumn(name = "book_id")
-    private Book book;
+    private int bookId;
 
     @Column(name = "quantity")
     private int quantity;

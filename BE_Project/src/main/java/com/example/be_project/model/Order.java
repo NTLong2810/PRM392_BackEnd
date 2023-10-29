@@ -13,24 +13,21 @@ public class Order {
     @Column(name = "order_id")
     private int orderId;
 
-    @ManyToOne
-    @JoinColumn(name = "payment_method_id")
-    private PaymentMethod paymentMethod;
+    @Column(name = "payment_method_id")
+    private int paymentMethodId;
 
-    @ManyToOne
-    @JoinColumn(name = "seller_id")
-    private Seller seller;
+    @Column(name = "seller_id")
+    private int sellerId;
 
-    @ManyToOne
-    @JoinColumn(name = "customer_id")
-    private Customer customer;
+    @Column(name = "customer_id")
+    private int customerId;
 
     @Column(name = "price")
     private Double price;
 
-    @ManyToOne
-    @JoinColumn(name = "order_status_id")
-    private OrderStatus orderStatus;
+
+    @Column(name = "order_status_id")
+    private int orderStatusId;
 
     @Column(name = "order_datetime")
     private Date orderDatetime;
