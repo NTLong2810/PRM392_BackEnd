@@ -1,9 +1,6 @@
 package com.example.be_project.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name="Customer_Address")
@@ -15,4 +12,3 @@ public class CustomerAddress {
     @Column(name = "address_id")
     private int addressId;
 }
-
