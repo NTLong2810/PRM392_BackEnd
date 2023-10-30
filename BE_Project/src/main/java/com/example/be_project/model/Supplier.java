@@ -2,8 +2,11 @@ package com.example.be_project.model;
 
 
 import jakarta.persistence.*;
+import lombok.Data;
+
 
 @Entity
+@Data
 @Table(name = "Supplier")
 public class Supplier {
     @Id
@@ -13,6 +16,4 @@ public class Supplier {
 
     @Column(name = "supplier_name")
     private String supplierName;
-
-    // Getter and setter methods
 }

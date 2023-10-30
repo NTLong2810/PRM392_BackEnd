@@ -1,10 +1,12 @@
 package com.example.be_project.model;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.util.List;
 
 @Entity
+@Data
 @Table(name = "Category")
 public class Category {
     @Id
@@ -14,6 +16,5 @@ public class Category {
 
     @Column(name = "category_name")
     private String categoryName;
-
     // Getter and setter methods
 }
