@@ -1,10 +1,9 @@
 package com.example.be_project.model;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Collection;
-import java.util.List;
-import java.util.Objects;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -49,5 +48,13 @@ public class Book {
 
     @Column(name = "book_quantity")
     private int bookQuantity;
+
+    @ManyToMany
+    @JoinTable(
+            name = "Book_Author",
+            joinColumns = @JoinColumn(name = "book_id"),
+            inverseJoinColumns = @JoinColumn(name = "author_id")
+    )
+    private Collection<Author> authors;
     // Getter and setter methods
 }
