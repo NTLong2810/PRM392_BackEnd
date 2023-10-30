@@ -8,7 +8,6 @@ import java.util.List;
 @Table(name = "Customer")
 public class Customer {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "customer_id")
     private int customerId;
 
