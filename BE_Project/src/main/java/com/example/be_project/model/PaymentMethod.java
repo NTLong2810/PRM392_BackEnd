@@ -8,7 +8,7 @@ import java.util.List;
 @Table(name = "PaymentMethod")
 public class PaymentMethod {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "payment_method_id")
     private int paymentMethodId;
 

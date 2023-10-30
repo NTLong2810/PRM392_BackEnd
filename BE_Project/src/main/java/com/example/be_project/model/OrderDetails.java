@@ -1,7 +1,15 @@
 package com.example.be_project.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+@Builder
 @Entity
 @Table(name = "OrderDetails")
 public class OrderDetails {
@@ -19,6 +27,8 @@ public class OrderDetails {
 
     @Column(name = "quantity")
     private int quantity;
+    @Column(name = "unit_price")
+    private double unit_price;
 
     // Getter and setter methods
 }

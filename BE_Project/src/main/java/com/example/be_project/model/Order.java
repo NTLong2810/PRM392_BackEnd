@@ -1,12 +1,22 @@
 package com.example.be_project.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 import java.util.List;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+@Builder
 @Entity
-@Table(name = "Order")
+@JsonIgnoreProperties(value = {"hibernateLazyInitializer","handler"})
+@Table(name = "Orders")
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,9 +45,14 @@ public class Order {
     @Column(name = "shipped_datetime")
     private Date shippedDatetime;
 
-
     @Column(name = "shipping_method_id")
     private int shippingMethodId;
+
+    @Column(name = "address")
+    private String address;
+
+    @Transient
+    private List<OrderDetails> orderDetailsList;
 
     // Getter and setter methods
 }
