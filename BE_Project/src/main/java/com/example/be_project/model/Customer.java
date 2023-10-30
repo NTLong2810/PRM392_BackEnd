@@ -8,6 +8,7 @@ import java.util.List;
 @Table(name = "Customer")
 public class Customer {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "customer_id")
     private int customerId;
 
@@ -16,6 +17,11 @@ public class Customer {
 
     @Column(name = "customer_email")
     private String customerEmail;
+
+
+    @Column(name = "customer_address")
+    private Long AddressId;
+
     @Column(name = "customer_phone")
     private String customerPhone;
 
@@ -23,4 +29,43 @@ public class Customer {
     private String customerImage;
 
     // Getter and setter methods
+
+    public int getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
+    }
+
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
+
+    public String getCustomerEmail() {
+        return customerEmail;
+    }
+
+    public void setCustomerEmail(String customerEmail) {
+        this.customerEmail = customerEmail;
+    }
+    public String getCustomerPhone() {
+        return customerPhone;
+    }
+
+    public void setCustomerPhone(String customerPhone) {
+        this.customerPhone = customerPhone;
+    }
+
+    public String getCustomerImage() {
+        return customerImage;
+    }
+
+    public void setCustomerImage(String customerImage) {
+        this.customerImage = customerImage;
+    }
 }
