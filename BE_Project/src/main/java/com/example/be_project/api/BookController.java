@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
@@ -36,11 +37,17 @@ public class BookController {
     }
     @GetMapping("books/{bookId}")
     public ResponseEntity<?> getBookInfoById(@PathVariable int bookId) {
-        Object bookInfo = bookService.bookDetail(bookId);
-        if (bookInfo != null) {
-            return ResponseEntity.ok(bookInfo);
-        } else {
-            return ResponseEntity.notFound().build();
+        try {
+            Optional<Book> bookInfo = bookService.bookDetail(bookId);
+            if (bookInfo.isPresent()) {
+                return new ResponseEntity<>(bookInfo, HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>("Danh sách sách trống", HttpStatus.NO_CONTENT);
+            }
+        } catch (Exception e) {
+            // Ghi log lỗi ở đây
+            e.printStackTrace();
+            return new ResponseEntity<>("Đã xảy ra lỗi nội bộ", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 }
