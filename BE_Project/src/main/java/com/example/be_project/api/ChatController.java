@@ -1,11 +1,11 @@
 package com.example.be_project.api;
 
-import com.example.be_project.model.Message;
-import com.example.be_project.service.ChatService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+        import com.example.be_project.model.Message;
+        import com.example.be_project.service.ChatService;
+        import org.springframework.beans.factory.annotation.Autowired;
+        import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+        import java.util.List;
 
 @RestController
 public class ChatController {
