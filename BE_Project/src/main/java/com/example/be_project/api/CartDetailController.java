@@ -14,6 +14,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/cart-detail/")
+@CrossOrigin(origins = "*")
 public class CartDetailController {
     private final CartDetailService cartDetailService;
     @GetMapping

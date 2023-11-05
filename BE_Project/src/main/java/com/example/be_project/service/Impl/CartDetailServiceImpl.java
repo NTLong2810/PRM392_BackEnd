@@ -47,6 +47,7 @@ public class CartDetailServiceImpl implements CartDetailService {
         cartDetailsList.stream().forEach(cartDetails -> {
             book = bookCartRepository.getById(cartDetails.getBookId());
             cartDetailDTO = CartDetailDTO.builder()
+                    .cartDetailId(cartDetails.getCartDetailsId())
                     .customerId(customerId)
                     .bookId(book.getBookId())
                     .bookImage(book.getBookImage())
