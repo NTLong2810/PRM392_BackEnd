@@ -17,7 +17,4 @@ public class BookService {
         return bookRepository.findAll();
     }
 
-    public Optional<Book> bookDetail(int bookId){
-        return bookRepository.findById(bookId);
-    }
 }
