@@ -12,6 +12,4 @@ public interface BookRepository extends JpaRepository<Book, Integer> {
     @Override
     List<Book> findAll();
 
-    @Override
-    Optional<Book> findById(Integer bookId);
 }
