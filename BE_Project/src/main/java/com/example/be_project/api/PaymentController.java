@@ -1,4 +1,4 @@
-package com.example.be_project.controller;
+package com.example.be_project.api;
 
 import com.example.be_project.Config.Config;
 import com.example.be_project.DTO.PaymentResDTO;

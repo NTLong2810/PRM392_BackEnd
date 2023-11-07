@@ -13,9 +13,10 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("api/v1/order/")
 public class OrderController {
     private final OrderService orderService;
-    @PostMapping
+    @PostMapping("/create")
     public ResponseEntity<?> createOrder(@RequestBody OrderDTO orderDTO){
         Order order = orderService.saveOrder(orderDTO);
+        System.out.println("CREATE_ORDER: " + order);
         return new ResponseEntity<>(order, HttpStatusCode.valueOf(200));
     }
 
