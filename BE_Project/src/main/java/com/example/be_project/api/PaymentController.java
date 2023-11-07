@@ -17,7 +17,7 @@ import java.util.*;
 @RequestMapping("/api/payment")
 public class PaymentController {
     @PostMapping("/create_payment")
-    public ResponseEntity<?> createPayment(@RequestParam float amount, @RequestParam String vnp_IpAddr) throws UnsupportedEncodingException {
+    public ResponseEntity<?> createPayment(@RequestParam double amount, @RequestParam String vnp_IpAddr) throws UnsupportedEncodingException {
         String vnp_Version = "2.1.0";
         String vnp_Command = "pay";
         String orderType = "other";
