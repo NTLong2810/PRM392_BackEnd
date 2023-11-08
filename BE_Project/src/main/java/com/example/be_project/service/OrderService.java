@@ -9,4 +9,5 @@ public interface OrderService {
     Order getById(int orderId);
 
     void deleteOrderById(int orderId);
+    void updateStatusById(int orderId, int statusId);
 }
