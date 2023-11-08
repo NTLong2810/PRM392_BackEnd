@@ -81,4 +81,9 @@ public class OrderServiceImpl implements OrderService {
         orderRepository.deleteById(orderId);
 
     }
+
+    @Override
+    public void updateStatusById(int orderId, int statusId) {
+        orderRepository.updateOrderStatusById(orderId, statusId);
+    }
 }

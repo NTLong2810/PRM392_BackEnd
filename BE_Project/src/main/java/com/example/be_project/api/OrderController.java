@@ -29,4 +29,9 @@ public class OrderController {
         orderService.deleteOrderById(orderId);
         return new ResponseEntity<>(null, HttpStatusCode.valueOf(200));
     }
+    @PutMapping("status")
+    public ResponseEntity<?> updateStatus(@RequestParam int orderId, @RequestParam int statusId){
+        orderService.updateStatusById(orderId, statusId);
+        return new ResponseEntity<>(null, HttpStatusCode.valueOf(200));
+    }
 }
