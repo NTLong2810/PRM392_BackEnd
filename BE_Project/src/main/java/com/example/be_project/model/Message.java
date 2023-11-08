@@ -23,8 +23,18 @@ public class Message {
 
     @Column(name = "seller_id")
     private int sellerId;
+    @Column(name = "type")
+    private String type;
 
-    // Getter and setter methods
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+// Getter and setter methods
 
     public int getMessageId() {
         return messageId;

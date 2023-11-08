@@ -21,6 +21,7 @@ public class ChatService {
         entity.setCustomerId(message.getCustomerId());
         entity.setSellerId(message.getSellerId());
         entity.setMessageContent(message.getMessageContent());
+        entity.setType(message.getType());
         entity.setMessageDatetime(new Date());
 
         messageRepository.save(entity);
