@@ -18,4 +18,9 @@ public class CustomerController {
     public List<Customer> getAllAccounts() {
         return customerRepository.findAll();
     }
+    @GetMapping("/customer/info")
+    public Customer getCustomerById(int customerId){
+        System.out.println("CUSTOMER_ID: " + customerId);
+        return customerRepository.getById(customerId);
+    }
 }
