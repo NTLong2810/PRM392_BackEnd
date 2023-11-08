@@ -1,12 +1,9 @@
 package com.example.be_project.model;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-import java.util.List;
-import java.util.Objects;
+import java.util.Collection;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -37,17 +34,27 @@ public class Book {
     @Column(name = "book_cover_type")
     private String bookCoverType;
 
-    @Column(name = "supplier_id")
-    private int supplierId;
+    @ManyToOne
+    @JoinColumn(name = "supplier_id") // thông qua khóa ngoại supplier_id
+    private Supplier supplier;
 
-    @Column(name = "publisher_id")
-    private int publisherId;
+    @ManyToOne
+    @JoinColumn (name = "publisher_id")
+    private Publisher publisher;
 
-    @Column(name = "category_id")
-    private int categoryId;
+    @ManyToOne
+    @JoinColumn (name = "category_id")
+    private Category category;
 
     @Column(name = "book_quantity")
     private int bookQuantity;
 
+    @ManyToMany
+    @JoinTable(
+            name = "Book_Author",
+            joinColumns = @JoinColumn(name = "book_id"),
+            inverseJoinColumns = @JoinColumn(name = "author_id")
+    )
+    private Collection<Author> authors;
     // Getter and setter methods
 }
