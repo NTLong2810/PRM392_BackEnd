@@ -6,6 +6,7 @@ import com.example.be_project.model.Book;
 import com.example.be_project.model.Order;
 import com.example.be_project.model.OrderDetails;
 import com.example.be_project.repository.BookCartRepository;
+import com.example.be_project.repository.CartDetailRepository;
 import com.example.be_project.repository.OrderDetailRepository;
 import com.example.be_project.repository.OrderRepository;
 import com.example.be_project.service.OrderService;
@@ -24,6 +25,7 @@ public class OrderServiceImpl implements OrderService {
     private final OrderRepository orderRepository;
     private final BookCartRepository bookCartRepository;
     private final OrderDetailRepository orderDetailRepository;
+    private final CartDetailRepository cartDetailRepository;
     private Order order;
     private double totalPrice;
     List<OrderDetails> orderDetailsList;
@@ -54,6 +56,7 @@ public class OrderServiceImpl implements OrderService {
                     .quantity(orderDetailDTO.getQuantity())
                     .unit_price(book.getBookPrice())
                     .build();
+            cartDetailRepository.deleteById((long) orderDetailDTO.getCartDetailId());
             totalPrice += book.getBookPrice() * orderDetailDTO.getQuantity();
             orderDetailsList.add(orderDetails);
         });
