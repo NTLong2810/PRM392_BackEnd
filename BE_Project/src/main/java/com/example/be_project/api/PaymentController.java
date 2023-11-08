@@ -3,6 +3,7 @@ package com.example.be_project.api;
 import com.example.be_project.Config.Config;
 import com.example.be_project.DTO.PaymentResDTO;
 import com.example.be_project.DTO.PaymentInfoResDTO;
+import com.example.be_project.repository.OrderRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +18,7 @@ import java.util.*;
 @RequestMapping("/api/payment")
 public class PaymentController {
     @PostMapping("/create_payment")
-    public ResponseEntity<?> createPayment(@RequestParam double amount, @RequestParam String vnp_IpAddr) throws UnsupportedEncodingException {
+    public ResponseEntity<?> createPayment(@RequestParam double amount, @RequestParam String vnp_IpAddr, @RequestParam int orderId) throws UnsupportedEncodingException {
         String vnp_Version = "2.1.0";
         String vnp_Command = "pay";
         String orderType = "other";
@@ -41,7 +42,7 @@ public class PaymentController {
         }
         vnp_Params.put("vnp_TxnRef", vnp_TxnRef);
         vnp_Params.put("vnp_OrderInfo", "Thanh toan don hang:" + vnp_TxnRef);
-        vnp_Params.put("vnp_OrderType", orderType);
+        vnp_Params.put("vnp_OrderType", String.valueOf(orderId));
 
 //        String locate = req.getParameter("language");
 //        if (locate != null && !locate.isEmpty()) {
@@ -112,6 +113,7 @@ public class PaymentController {
             @RequestParam(value = "vnp_Amount") String amount,
             @RequestParam (value = "vnp_BankCode") String bankCode,
             @RequestParam (value = "vnp_OrderInfo") String orderInfo,
+            @RequestParam (value = "vnp_OrderType") String orderType,
             @RequestParam (value = "vnp_ResponseCode") String responseCode) throws UnsupportedEncodingException
     {
         PaymentInfoResDTO transactionStatusDTO = new PaymentInfoResDTO();
@@ -123,6 +125,9 @@ public class PaymentController {
             transactionStatusDTO.setBankCode(bankCode);
             transactionStatusDTO.setOrderInfo(orderInfo);
             transactionStatusDTO.setResponseCode(responseCode);
+            OrderRepository orderRepository =null;
+            System.out.println("ORDER_ID: " + orderType);
+            orderRepository.updateOrderStatusById(Integer.parseInt(orderType), 2);
             System.out.println("SUCCESS");
         }
         else{
