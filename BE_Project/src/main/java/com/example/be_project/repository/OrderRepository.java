@@ -16,6 +16,9 @@ public interface OrderRepository extends JpaRepository<Order, Integer> {
     @Transactional
     void deleteById(int orderId);
 
+
+    @Modifying
+    @Transactional
     @Query(value = "update Orders set order_status_id = :statusId where order_id = :orderId", nativeQuery = true)
     void updateOrderStatusById(int orderId, int statusId);
 }

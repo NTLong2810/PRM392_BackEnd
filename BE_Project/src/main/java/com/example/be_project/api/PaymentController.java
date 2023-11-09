@@ -4,6 +4,10 @@ import com.example.be_project.Config.Config;
 import com.example.be_project.DTO.PaymentResDTO;
 import com.example.be_project.DTO.PaymentInfoResDTO;
 import com.example.be_project.repository.OrderRepository;
+import com.example.be_project.service.OrderService;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +19,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/api/payment")
 public class PaymentController {
     @PostMapping("/create_payment")
@@ -22,6 +27,7 @@ public class PaymentController {
         String vnp_Version = "2.1.0";
         String vnp_Command = "pay";
         String orderType = "other";
+        System.out.println("ORDER_ID: " +orderId);
 //        long amount = Integer.parseInt(req.getParameter("amount"))*100;
 //        long amount = 10000*100;
 //        String bankCode = req.getParameter("bankCode");
@@ -41,14 +47,14 @@ public class PaymentController {
             vnp_Params.put("vnp_BankCode", bankCode);
         }
         vnp_Params.put("vnp_TxnRef", vnp_TxnRef);
-        vnp_Params.put("vnp_OrderInfo", "Thanh toan don hang:" + vnp_TxnRef);
-        vnp_Params.put("vnp_OrderType", String.valueOf(orderId));
+        vnp_Params.put("vnp_OrderInfo", "Thanh toan don hang: " + vnp_TxnRef + " " + orderId);
+        vnp_Params.put("vnp_OrderType", orderType);
 
 //        String locate = req.getParameter("language");
 //        if (locate != null && !locate.isEmpty()) {
 //            vnp_Params.put("vnp_Locale", locate);
 //        } else {
-            vnp_Params.put("vnp_Locale", "vn");
+        vnp_Params.put("vnp_Locale", "vn");
 //        }
         vnp_Params.put("vnp_ReturnUrl", Config.vnp_ReturnUrl);
         vnp_Params.put("vnp_IpAddr", vnp_IpAddr);
@@ -106,18 +112,21 @@ public class PaymentController {
         return ResponseEntity.status(HttpStatus.OK).body(paymentResDTO);
 
 //        return new ResponseEntity<>(order, HttpStatusCode.valueOf(200));
+
     }
+    private final OrderService orderService;
+
 
     @GetMapping("/payment_information")
     public ResponseEntity<?> transaction(
             @RequestParam(value = "vnp_Amount") String amount,
             @RequestParam (value = "vnp_BankCode") String bankCode,
             @RequestParam (value = "vnp_OrderInfo") String orderInfo,
-            @RequestParam (value = "vnp_OrderType") String orderType,
             @RequestParam (value = "vnp_ResponseCode") String responseCode) throws UnsupportedEncodingException
     {
         PaymentInfoResDTO transactionStatusDTO = new PaymentInfoResDTO();
         System.out.println("PaymentInfor: " + amount);
+
         if(responseCode.equals("00")){
             transactionStatusDTO.setStatus("Ok");
             transactionStatusDTO.setMessage("Successfully");
@@ -125,9 +134,10 @@ public class PaymentController {
             transactionStatusDTO.setBankCode(bankCode);
             transactionStatusDTO.setOrderInfo(orderInfo);
             transactionStatusDTO.setResponseCode(responseCode);
-            OrderRepository orderRepository =null;
-            System.out.println("ORDER_ID: " + orderType);
-            orderRepository.updateOrderStatusById(Integer.parseInt(orderType), 2);
+            String[] listString = orderInfo.split(" ");
+            System.out.println("ORDER_INFO: " + orderInfo);
+            System.out.println("ORDER_ID: " + Integer.parseInt(listString[listString.length - 1]));
+            orderService.updateStatusById(Integer.parseInt(listString[listString.length - 1]), 2);
             System.out.println("SUCCESS");
         }
         else{
